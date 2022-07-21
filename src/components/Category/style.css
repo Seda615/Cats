@@ -1,0 +1,23 @@
+.category {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 15px;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.category button {
+    max-width: 200px;
+    min-width: 100px;
+    background-color: lightblue;
+    margin: 5px 5px;
+    padding: 5px;
+    height: 40px;
+    border: 1px solid lightblue;
+    border-radius: 10px;
+    font-weight: bold;
+}

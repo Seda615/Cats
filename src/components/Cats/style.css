@@ -1,0 +1,31 @@
+.cats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 15px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.cats p {
+    width: 100%;
+}
+
+.cats img {
+    width: 200px;
+    height: 200px;
+    margin: 10px 5px;
+}
+
+.cats button {
+    max-width: 200px;
+    min-width: 100px;
+    background-color: lightblue;
+    height: 50px;
+    border: 1px solid lightblue;
+    border-radius: 10px;
+    font-weight: bold;
+}

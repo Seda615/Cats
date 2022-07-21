@@ -1,57 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import React, {useEffect, useRef} from 'react';
+import Cats from './components/Cats';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCategories, getCats } from "./features/store/reducer";
+import Category from './components/Category';
+import About from './components/About';
 import './App.css';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom"
 
 function App() {
+
+  const firstRenderRef = useRef(true);
+  const dispatch = useDispatch();
+  // const categoriesId = useSelector(state => state.cats.categoriesId);
+
+  useEffect(() => {
+    if (firstRenderRef.current) {
+        // dispatch(getCats({categoriesId}))
+        dispatch(getCategories())
+        firstRenderRef.current = false;
+    }
+}, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+      <BrowserRouter>
+      <nav>
+        <Link to="/">cats</Link>
+        <Link to="about">about</Link>
+        <Category />
+      </nav>
+        <Routes>
+          <Route path="/"  element={<Cats />} />
+          <Route path="/about" element={<About />}/>
+        </Routes>
+      </BrowserRouter>
+     </div>
   );
 }
 
